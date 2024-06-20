@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' />
+    <title>Título de la página</title>
     <link rel="stylesheet" href="/assets/css/css.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="shortcut icon" href="favicon/olla.ico" type="image/x-icon">
@@ -14,17 +16,18 @@
     <header class="header">
         <h1 class="animate__animated animate__flip title-header">BARBER SHOP</h1>
     </header>
-    <nav class="menu-nav">
-        <ul class="menu-ul">
-            <li class="menu-li"><a href="index.html">Inicio</a></li>
-            <li class="menu-li"><a href="producto.htm">Productos</a></li>
-            <li class="menu-li"><a href="sucursales.html">Sucursales</a></li>
-            <li class="menu-li"><a href="registrese.html">Registro</a></li>
+    <nav class="nav">
+        <ul class="nav-ul">
+            <li ><a href="index.html">Inicio</a></li>
+            <li ><a href="producto.htm">Productos</a></li>
+            <li ><a href="sucursales.html">Sucursales</a></li>
+            <li ><a href="registrese.html">Registro</a></li>
         </ul>
+
     </nav>
-    <main>
+    <div class="mein">
         <section>
-            <div class="container">
+            <div class="container-form">
                 <form id="registroForm">
                     <h2 class="formulario-title">Formulario de Registro</h2>
                     <label for="nombre1">Nombre:</label><br>
@@ -37,17 +40,17 @@
                     <input type="text" id="direccion" name="direccion"><br>
                                 
                     <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email"><br>
+                    <input type="text" id="email" name="email"><br>
                              
                     <label for="telefono">Teléfono:</label><br>
-                    <input type="tel" id="telefono" name="telefono">
+                    <input type="text" id="telefono" name="telefono">
                    
                   
                     <button id="btn">Submit</button>
                 </form>
             </div>
         </section>
-    </main>
+    </div>
     <footer>
         <div>
             <a class="redsoc" href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
