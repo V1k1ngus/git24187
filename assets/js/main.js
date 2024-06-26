@@ -9,6 +9,16 @@ const validaExito = (elemento) => {
     elemento.style.backgroundColor = "#CCFFCC";
 };
 
+const limpiarCampos = () => {
+    const form = document.querySelector('#registroForm');
+    form.reset();
+    const campos = form.querySelectorAll('input');
+    campos.forEach(campo => {
+        campo.style.border = "";
+        campo.style.backgroundColor = "";
+    });
+};
+
 window.addEventListener('load', () => {
     const form = document.querySelector('#registroForm');
     const nombre1 = document.querySelector('#nombre1');
@@ -35,45 +45,141 @@ window.addEventListener('load', () => {
         // Función para verificar si es un correo electrónico válido
         const esCorreoValido = (valor) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
 
+        let isValid = true;
+
         if (!nombreVal) {
             validaFallia(nombre1, "El campo de nombre no puede estar vacío");
+            isValid = false;
         } else if (esNumero(nombreVal)) {
             validaFallia(nombre1, "El campo de nombre no puede contener números");
+            isValid = false;
         } else {
             validaExito(nombre1);
         }
 
         if (!apellidoVal) {
             validaFallia(apellido, "El campo de apellido no puede estar vacío");
+            isValid = false;
         } else if (esNumero(apellidoVal)) {
             validaFallia(apellido, "El campo de apellido no puede ser un número");
+            isValid = false;
         } else {
             validaExito(apellido);
         }
 
         if (!direccionVal) {
             validaFallia(direccion, "El campo de dirección no puede estar vacío");
+            isValid = false;
         } else {
             validaExito(direccion);
         }
 
         if (!emailVal) {
             validaFallia(email, "El campo de correo electrónico no puede estar vacío");
+            isValid = false;
         } else if (!esCorreoValido(emailVal)) {
             validaFallia(email, "Ingrese un correo electrónico válido");
+            isValid = false;
         } else {
             validaExito(email);
         }
 
         if (!telefonoVal) {
             validaFallia(telefono, "El campo de teléfono no puede estar vacío");
+            isValid = false;
         } else if (!esNumero(telefonoVal)) {
             validaFallia(telefono, "El campo de teléfono debe contener solo números");
+            isValid = false;
         } else {
             validaExito(telefono);
         }
+
+        if (isValid) {
+            alert("Datos enviados");
+            limpiarCampos();
+        }
     };
 });
+
+
+
+// const validaFallia = (elemento, mensaje) => {
+//     console.error(mensaje);
+//     elemento.style.border = "2px solid red";
+//     elemento.style.backgroundColor = "#FFCCCC";
+// };
+
+// const validaExito = (elemento) => {
+//     elemento.style.border = "2px solid green";
+//     elemento.style.backgroundColor = "#CCFFCC";
+// };
+
+// window.addEventListener('load', () => {
+//     const form = document.querySelector('#registroForm');
+//     const nombre1 = document.querySelector('#nombre1');
+//     const apellido = document.querySelector('#apellido');
+//     const direccion = document.querySelector('#direccion');
+//     const email = document.querySelector('#email');
+//     const telefono = document.querySelector('#telefono');
+
+//     form.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         validarCampos();
+//     });
+
+//     const validarCampos = () => {
+//         const nombreVal = nombre1.value.trim();
+//         const apellidoVal = apellido.value.trim();
+//         const direccionVal = direccion.value.trim();
+//         const emailVal = email.value.trim();
+//         const telefonoVal = telefono.value.trim();
+
+//         // Función para verificar si es un número
+//         const esNumero = (valor) => !isNaN(valor);
+
+//         // Función para verificar si es un correo electrónico válido
+//         const esCorreoValido = (valor) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
+
+//         if (!nombreVal) {
+//             validaFallia(nombre1, "El campo de nombre no puede estar vacío");
+//         } else if (esNumero(nombreVal)) {
+//             validaFallia(nombre1, "El campo de nombre no puede contener números");
+//         } else {
+//             validaExito(nombre1);
+//         }
+
+//         if (!apellidoVal) {
+//             validaFallia(apellido, "El campo de apellido no puede estar vacío");
+//         } else if (esNumero(apellidoVal)) {
+//             validaFallia(apellido, "El campo de apellido no puede ser un número");
+//         } else {
+//             validaExito(apellido);
+//         }
+
+//         if (!direccionVal) {
+//             validaFallia(direccion, "El campo de dirección no puede estar vacío");
+//         } else {
+//             validaExito(direccion);
+//         }
+
+//         if (!emailVal) {
+//             validaFallia(email, "El campo de correo electrónico no puede estar vacío");
+//         } else if (!esCorreoValido(emailVal)) {
+//             validaFallia(email, "Ingrese un correo electrónico válido");
+//         } else {
+//             validaExito(email);
+//         }
+
+//         if (!telefonoVal) {
+//             validaFallia(telefono, "El campo de teléfono no puede estar vacío");
+//         } else if (!esNumero(telefonoVal)) {
+//             validaFallia(telefono, "El campo de teléfono debe contener solo números");
+//         } else {
+//             validaExito(telefono);
+
+//         }
+//     };
+// });
 
 
 // // Aplicar estilo CSS al campo para indicar un error
